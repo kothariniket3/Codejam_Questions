@@ -1,0 +1,26 @@
+import numpy as np
+
+T = input
+for s in range(int(T())):
+    N = int(T())
+    m = []
+    for i in range(N):
+        m.append(list(map(int, T().split())))
+    z = np.array(m)
+
+    ans = N * (N + 1) // 2
+    col = 0
+    row = 0
+    f = list(range(1, N + 1))
+    for i in range(N):
+        if (sorted(z[:, i:i + 1]) != f):
+            col += 1
+
+    for i in z:
+        if (sorted(i) != f):
+            row += 1
+    k = 0;
+    for i in range(N):
+        k += z[i][i]
+
+    print("Case #" + str(s+1) + ": ", k, row, col)
